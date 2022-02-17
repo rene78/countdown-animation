@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Leaflet layers</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+  <!-- <script src="test.js" type="module" defer></script> -->
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .map {
+      height: 400px;
+      width: 400px;
+      background-color: lightgray;
+    }
+
+    .number {
+      font-size: 140px;
+      color: #778F9B;
+      position: relative;
+      height: 100%;
+      width: 100%;
+    }
+
+    .number span {
+      position: absolute;
+      opacity: 0;
+      top: 40px;
+    }
+
+    @keyframes time {
+
+      0%,
+      10%,
+      100% {
+        opacity: 0;
+        transform: scale(1);
+      }
+
+      5% {
+        opacity: 0.8;
+        transform: scale(1.2);
+      }
+    }
+
+    .start-animation {
+      animation: time 4s;
+    }
+
+    .go {
+      animation-delay: 3s;
+      color: #FF1643;
+      left: calc(50% - 110px);
+    }
+
+    .num1,
+    .num2,
+    .num3 {
+      left: calc(50% - 60px);
+    }
+
+    .num1 {
+      animation-delay: 2s;
+    }
+
+    .num2 {
+      animation-delay: 1s;
+    }
+
+    .num3 {
+      animation-delay: 0s;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="map">
+    <div class="number">
+      <span class="countdown num3">3</span>
+      <span class="countdown num2">2</span>
+      <span class="countdown num1">1</span>
+      <span class="countdown go">Go!</span>
+    </div>
+  </div>
+  <button onclick="startAnimation()">Start Animation</button>
+</body>
+
+<script>
+  function startAnimation() {
+    let elements = document.querySelectorAll(".countdown");
+    console.log(elements);
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].classList.add('start-animation');
+    }
+    //Remove animation class again after 4s, so that startAnimation() can be called again
+    setTimeout(function () {
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].classList.remove('start-animation');
+      }
+    }, 4000)
+  }
+</script>
+
+</html>

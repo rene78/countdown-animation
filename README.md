@@ -1,0 +1,1 @@
+A countdown animation in pure HTML and CSS. Copied from https://codepen.io/petr_vslcc/pen/grrPwy. Thanks Petr Florian!
